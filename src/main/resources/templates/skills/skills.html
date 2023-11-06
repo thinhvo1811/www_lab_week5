@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proposed Skills</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="m-2">
+    <ul class="nav nav-tabs">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">User</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" th:href="@{/candidates/info}">My Information</a></li>
+                <li><a class="dropdown-item" th:href="@{/candidates/skills}">My Skills</a></li>
+                <li><a class="dropdown-item" th:href="@{/experiences}">My Experiences</a></li>
+                <li><a class="dropdown-item" th:href="@{/login-candidate}">Logout</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Job</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" th:href="@{/jobs}">All Jobs</a></li>
+                <li><a class="dropdown-item" th:href="@{/jobs/proposed}">Proposed Jobs</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page"  href="#">Proposed Skills</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <h2 class="text-center mb-4">Proposed Skills</h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="skill : ${skills}">
+                    <td th:text="${skill.id}"></td>
+                    <td th:text="${skill.skillName}"></td>
+                    <td th:text="${skill.type}"></td>
+                    <td th:text="${skill.skillDescription}"></td>
+                    <td><a th:href="@{/show-add-candidate-skill-form/{id}(id=${skill.id})}">Add To My Skills</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
