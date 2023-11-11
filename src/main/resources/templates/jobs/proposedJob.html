@@ -59,7 +59,7 @@
             <nav aria-label="Page navigation example" class="d-flex justify-content-center">
                 <ul class="pagination" th:if="${jobPage.totalPages > 0}" th:each="pageNumber : ${pageNumbers}">
                     <li th:class="${pageNumber==jobPage.number + 1} ? active">
-                        <a class="page-link" th:text="${pageNumber}" th:href="@{/jobs(size=${jobPage.size}, page=${pageNumber})}"></a>
+                        <a class="page-link" th:text="${pageNumber}" th:href="@{/jobs/proposed(size=${jobPage.size}, page=${pageNumber})}"></a>
                     </li>
                 </ul>
             </nav>

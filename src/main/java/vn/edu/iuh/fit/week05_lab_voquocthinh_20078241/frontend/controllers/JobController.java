@@ -159,6 +159,7 @@ public class JobController {
         Page<Candidate> candidatePage = candidateService.findProposedCandidatesPaginated(currentPage - 1, pageSize, id);
 
         model.addAttribute("candidatePage", candidatePage);
+        model.addAttribute("jobID", id);
         int totalPage = candidatePage.getTotalPages();
         if (totalPage > 0){
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPage)
