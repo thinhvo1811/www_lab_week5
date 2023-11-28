@@ -1,6 +1,7 @@
 package vn.edu.iuh.fit.week05_lab_voquocthinh_20078241.frontend.controllers;
 
 import com.neovisionaries.i18n.CountryCode;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -153,5 +154,13 @@ public class CompanyController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
         return "jobs/listJobOfCompany";
+    }
+
+    @GetMapping("/logout-company")
+    public ModelAndView logoutCompany(HttpSession session){
+        ModelAndView modelAndView = new ModelAndView();
+        session.removeAttribute("company-account");
+        modelAndView.setViewName("redirect:/login-company");
+        return modelAndView;
     }
 }

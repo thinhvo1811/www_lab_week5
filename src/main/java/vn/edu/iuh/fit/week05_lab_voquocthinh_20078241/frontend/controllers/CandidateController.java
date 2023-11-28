@@ -1,6 +1,7 @@
 package vn.edu.iuh.fit.week05_lab_voquocthinh_20078241.frontend.controllers;
 
 import com.neovisionaries.i18n.CountryCode;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -166,6 +167,14 @@ public class CandidateController {
         modelAndView.addObject("candidateExperiences", candidate.getExperiences());
         modelAndView.addObject("candidateSkills", candidate.getCandidateSkills());
         modelAndView.setViewName("candidates/candidateDetail");
+        return modelAndView;
+    }
+
+    @GetMapping("/logout-candidate")
+    public ModelAndView logoutCandidate(HttpSession session){
+        ModelAndView modelAndView = new ModelAndView();
+        session.removeAttribute("candidate-account");
+        modelAndView.setViewName("redirect:/login-candidate");
         return modelAndView;
     }
 }
